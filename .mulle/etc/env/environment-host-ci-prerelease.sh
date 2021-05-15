@@ -1,4 +1,22 @@
 #
+# MulleObjC nodetype: ${MULLE_OBJC_NODETYPE:-tar}
+#
+export MULLE_OBJC_NODETYPE="git"
+
+
+#
+# MulleObjC url: ${MULLE_OBJC_URL:-https://github.com/mulle-objc/MulleObjC/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE_OBJC_URL="https://github.com/mulle-objc/MulleObjC.git"
+
+
+#
+# MulleObjC branch: ${MULLE_OBJC_BRANCH}
+#
+export MULLE_OBJC_BRANCH="prerelease"
+
+
+#
 # mulle-objc-runtime nodetype: ${MULLE_OBJC_RUNTIME_NODETYPE:-tar}
 #
 export MULLE_OBJC_RUNTIME_NODETYPE="git"
@@ -248,5 +266,23 @@ export MULLE_OBJC_LIST_URL="https://github.com/mulle-objc/mulle-objc-list.git"
 # mulle-objc-list branch: ${MULLE_OBJC_LIST_BRANCH}
 #
 export MULLE_OBJC_LIST_BRANCH="prerelease"
+
+
+#
+# mulle-time nodetype: ${MULLE_TIME_NODETYPE:-tar}
+#
+export MULLE_TIME_NODETYPE="git"
+
+
+#
+# mulle-time url: ${MULLE_TIME_URL:-https://github.com/mulle-core/mulle-time/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE_TIME_URL="https://github.com/mulle-core/mulle-time.git"
+
+
+#
+# mulle-time branch: ${MULLE_TIME_BRANCH}
+#
+export MULLE_TIME_BRANCH="prerelease"
 
 

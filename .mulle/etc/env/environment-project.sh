@@ -1,9 +1,4 @@
-#
-#
-#
-export PROJECT_NAME="MulleObjC"
-
-
+# Edit with: mulle-env environment --scope project set <key> <value>
 #
 #
 #
@@ -14,6 +9,12 @@ export PROJECT_TYPE="library"
 #
 #
 export PROJECT_SOURCE_DIR="src"
+
+
+#
+#
+#
+export PROJECT_NAME="MulleObjCLockFoundation"
 
 
 #
@@ -32,23 +33,5 @@ export PROJECT_DIALECT="objc"
 #
 #
 export PROJECT_EXTENSIONS="m:aam"
-
-
-#
-#
-#
-export PROJECT_IDENTIFIER="MulleObjC"
-
-
-#
-#
-#
-export PROJECT_DOWNCASE_IDENTIFIER="mulle_objc"
-
-
-#
-#
-#
-export PROJECT_UPCASE_IDENTIFIER="MULLE_OBJC"
 
 

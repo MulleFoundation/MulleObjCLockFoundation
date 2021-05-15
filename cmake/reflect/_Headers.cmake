@@ -8,92 +8,56 @@ if( MULLE_TRACE_INCLUDE)
    MESSAGE( STATUS "# Include \"${CMAKE_CURRENT_LIST_FILE}\"" )
 endif()
 
+#
+# contents are derived from the file locations
+
 set( INCLUDE_DIRS
 src
-src/class
-src/function
-src/protocol
 src/reflect
-src/struct
 )
 
+#
+# contents selected with patternfile ??-header--private-generated-headers
+#
 set( PRIVATE_GENERATED_HEADERS
-src/reflect/_MulleObjC-import-private.h
-src/reflect/_MulleObjC-include-private.h
+src/reflect/_MulleObjCLockFoundation-import-private.h
+src/reflect/_MulleObjCLockFoundation-include-private.h
 )
 
+#
+# contents selected with patternfile ??-header--private-generic-headers
+#
 set( PRIVATE_GENERIC_HEADERS
 src/import-private.h
-src/include-private.h
 )
 
-set( PRIVATE_HEADERS
-src/class/NSMethodSignature-Private.h
-src/function/MulleObjCExceptionHandler-Private.h
-src/mulle-objc-autoreleasepointerarray-private.h
-src/mulle-objc-exceptionhandlertable-private.h
-src/mulle-objc-startup-private.inc
-src/mulle-objc-universeconfiguration-private.h
-src/mulle-objc-universefoundationinfo-private.h
-)
-
+#
+# contents selected with patternfile ??-header--public-generated-headers
+#
 set( PUBLIC_GENERATED_HEADERS
-src/reflect/_MulleObjC-export.h
-src/reflect/_MulleObjC-import.h
-src/reflect/_MulleObjC-include.h
-src/reflect/_MulleObjC-provide.h
+src/reflect/_MulleObjCLockFoundation-export.h
+src/reflect/_MulleObjCLockFoundation-import.h
+src/reflect/_MulleObjCLockFoundation-include.h
+src/reflect/_MulleObjCLockFoundation-provide.h
 )
 
+#
+# contents selected with patternfile ??-header--public-generic-headers
+#
 set( PUBLIC_GENERIC_HEADERS
 src/import.h
-src/include.h
 )
 
+#
+# contents selected with patternfile ??-header--public-headers
+#
 set( PUBLIC_HEADERS
-src/MulleObjCCompiler.h
-src/MulleObjCIntegralType.h
-src/MulleObjCUniverse.h
-src/MulleObjCVersion.h
-src/MulleObjC.h
-src/class/MulleObjCAutoreleasePool.h
-src/class/MulleObjCLoader.h
-src/class/NSAutoreleasePool.h
-src/class/NSInvocation.h
-src/class/NSLock.h
-src/class/NSMethodSignature.h
-src/class/NSObject+NSCodingSupport.h
-src/class/NSObject.h
-src/class/NSProxy.h
-src/class/NSRecursiveLock.h
-src/class/NSThread.h
-src/function/MulleObjCAllocation.h
-src/function/MulleObjCExceptionHandler.h
-src/function/MulleObjCFunctions.h
-src/function/MulleObjCHashFunctions.h
-src/function/MulleObjCStackFrame.h
-src/function/NSByteOrder.h
-src/function/NSDebug.h
-src/minimal.h
-src/mulle-objc-classbit.h
-src/mulle-objc-fastclassid.h
-src/mulle-objc-fastmethodid.h
-src/mulle-objc.h
-src/mulle-objc-threadfoundationinfo.h
-src/mulle-objc-type.h
-src/protocol/MulleObjCClassCluster.h
-src/protocol/MulleObjCException.h
-src/protocol/MulleObjCProtocol.h
-src/protocol/MulleObjCRuntimeObject.h
-src/protocol/MulleObjCSingleton.h
-src/protocol/MulleObjCTaggedPointer.h
-src/protocol/NSCoding.h
-src/protocol/NSContainer.h
-src/protocol/NSCopying.h
-src/protocol/NSEnumeration.h
-src/protocol/NSLocking.h
-src/protocol/NSMutableCopying.h
-src/protocol/NSObjectProtocol.h
-src/struct/NSRange.h
-src/struct/NSZone.h
+src/MulleObjCLoader+MulleObjCLockFoundation.h
+src/MulleObjCLockFoundation.h
+src/NSConditionLock.h
+src/NSCondition.h
+src/NSLock.h
+src/NSLocking.h
+src/NSRecursiveLock.h
 )
 

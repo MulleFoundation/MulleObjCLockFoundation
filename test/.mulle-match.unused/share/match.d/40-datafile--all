@@ -1,6 +1,0 @@
-*.stdout
-*.stdin
-*.stderr
-*.errors
-*.ccdiag
-

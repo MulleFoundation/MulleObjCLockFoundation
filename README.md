@@ -1,97 +1,95 @@
-# MulleObjC
+# 🔐 MulleObjCLockFoundation
 
-#### 💎 A collection of Objective-C root classes for mulle-objc
+#### 🔐 MulleObjCLockFoundation provides locking support
 
-MulleObjC supplies the most basic runtime components like NSObject or NSThread
-to build a foundation on top of it. MulleObjC depends on standard C libraries 
-only (for instance not on `<unistd.h>`)
+This framework builds on `mulle-thread` but is also dependend on posix
+conditions.
+
+#### Classes
+
+Class               | Description
+--------------------|-----------------------
+`NSLock`            |
+`NSCondition`       |
+`NSConditionLock`   |
+`NSRecursiveLock`   |
 
 
-| Release Version
-|-----------------------------------
-| ![Tag](https://img.shields.io/github/tag/mulle-objc/MulleObjC.svg) [![Build Status](https://github.com/mulle-objc/MulleObjC/workflows/CI/badge.svg?branch=release)](https://github.com/mulle-objc/MulleObjC/workflows)
+#### Protocols
 
+Class               | Description
+--------------------|-----------------------
+`NSLocking`         |
 
-### Objects
+### You are here
 
-* NSAutoreleasePool - garbage collection
-* NSCoder - object serialization
-* NSObject - the root class of everything
-* NSLock - locking for threading
-* NSRecursiveLock - recursive locking for threading
-* NSInvocation - method call serialization
-* NSMethodSignature - method description
-* NSProxy - the other root class of everything :=)
-* NSThread - threads
-
-### Protocols
-
-* NSCoding - object serialization
-* NSCopying - object copying
-* NSFastEnumeration  - support for `for ... in` loops
-* NSLocking  - support for `for ... in` loops
-* NSObject - for objects that don't want to behave like NSObject but can't be them
-* MulleObjCClassCluster - enables classes to act as class clusters
-* MulleObjCException - enabled a class to act as an exception
-* MulleObjCRuntimeObject - documents the minimum required id superset
-* MulleObjCSingleton - enables classes to produce singletons
-* MulleObjCTaggedPointer - enables classes to use tagged pointers
-
-It does all the interfacing with the **mulle-objc** runtime. Any
-library code above MulleObjC ideally, should not be using the mulle-objc runtime
-directly. Creating a foundation on top of **mulle-objc**  without using
-**MulleObjC** is a foolhardy endeavor IMO.
-
-MulleObjC must be compiled with the **mulle-clang** compiler, or a compiler
-which supports the metaABI required for the mulle-objc runtime.
-
-## Required Libraries and Tools
-
-![Libraries and Tools](https://raw.githubusercontent.com/mulle-objc/MulleObjC/release/dox/MulleObjC-dependencies.png)
-
-  Name         | Build Status | Release Version
----------------|--------------|---------------------------------
-[mulle-container](//github.com/mulle-c/mulle-container) | [![Build Status](https://github.com/mulle-c/mulle-container/workflows/CI/badge.svg?branch=release)](https://travis-ci.org/mulle-c/mulle-container) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-c/mulle-container.svg) [![Build Status](https://github.com/mulle-c/mulle-container/workflows/CI/badge.svg?branch=release)](https://travis-ci.org/mulle-c/mulle-container)
-[mulle-objc-list](//github.com/mulle-objc/mulle-objc-list) | [![Build Status](https://github.com/mulle-objc/mulle-objc-list/workflows/CI/badge.svg?branch=release)](https://travis-ci.org/mulle-objc/mulle-objc-list) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-objc/mulle-objc-list.svg) [![Build Status](https://github.com/mulle-objc/mulle-objc-list/workflows/CI/badge.svg?branch=release)](https://travis-ci.org/mulle-objc/mulle-objc-list)
-[mulle-objc-runtime](//github.com/mulle-objc/mulle-objc-runtime) | [![Build Status](https://github.com/mulle-objc/mulle-objc-runtime/workflows/CI/badge.svg?branch=release)](https://travis-ci.org/mulle-objc/mulle-objc-runtime) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-objc/mulle-objc-runtime.svg) [![Build Status](https://github.com/mulle-objc/mulle-objc-runtime/workflows/CI/badge.svg?branch=release)](https://travis-ci.org/mulle-objc/mulle-objc-runtime)
-
+```
+   .-------------------------------------------------------------------.
+   | MulleFoundation                                                   |
+   '-------------------------------------------------------------------'
+   .----------------------------.
+   | Calendar                   |
+   '----------------------------'
+   .----------------------------.
+   | OS                         |
+   '----------------------------'
+           .--------------------..----------..-----..---------.
+           | Plist              || Archiver || KVC || Unicode |
+           '--------------------''----------''-----''---------'
+           .--------------------------------------------------..-------.
+           | Standard                                         || Math  |
+           '--------------------------------------------------''-------'
+   .======..-----------------------------..----------------------------.
+   | Lock || Container                   || Value                      |
+   '======''-----------------------------''----------------------------'
+   .-------------------------------------------------------------------.
+   | MulleObjC                                                         |
+   '-------------------------------------------------------------------'
+```
 
 ## Add
 
-This is project is a [mulle-sde](https://mulle-sde.github.io/) project.
-Add it with:
+Use [mulle-sde](//github.com/mulle-sde) to add MulleObjCLockFoundation to your project:
 
+``` console
+mulle-sde dependency add --c --github MulleFoundation MulleObjCLockFoundation
 ```
-mulle-sde dependency add --objc --github mulle-objc MulleObjC
-```
-
-Executables will need to link with [MulleObjC-startup](//github.com/mulle-objc/MulleObjC-startup) as well.
 
 ## Install
 
-See [mulle-objc-developer](//github.com/mulle-objc/mulle-objc-developer) for
-installation instructions.
+### mulle-sde
 
-## Acknowledgements
-
-Parts of this library:
+Use [mulle-sde](//github.com/mulle-sde) to build and install MulleObjCLockFoundation
+and all its dependencies:
 
 ```
-Copyright (c) 2006-2007 Christopher J. W. Lloyd
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+mulle-sde install --prefix /usr/local \
+   https://github.com/MulleFoundation/MulleObjCLockFoundation/archive/latest.tar.gz
 ```
 
-### Platforms and Compilers
-
-All platforms and compilers supported by
-[mulle-c11](//github.com/mulle-c/mulle-c11/) and
-[mulle-thread](//github.com/mulle-concurrent/mulle-thread/).
+### Manual Installation
 
 
-## Author
+Install the requirements:
 
-[Nat!](//www.mulle-kybernetik.com/weblog) for
-[Mulle kybernetiK](//www.mulle-kybernetik.com) and
-[Codeon GmbH](//www.codeon.de)
+Requirements                                      | Description
+--------------------------------------------------|-----------------------
+[some-requirement](//github.com/some/requirement) | Some requirement
+
+Install into `/usr/local`:
+
+```
+mkdir build 2> /dev/null
+(
+   cd build ;
+   cmake -DCMAKE_INSTALL_PREFIX=/usr/local \
+         -DCMAKE_PREFIX_PATH=/usr/local \
+         -DCMAKE_BUILD_TYPE=Release .. ;
+   make install
+)
+```
+
+### Steal
+
+Read [STEAL.md](//github.com/mulle-c11/dox/STEAL.md) on how to steal the
+source code and incorporate it in your own projects.

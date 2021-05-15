@@ -1,14 +1,19 @@
 cmake_minimum_required( VERSION 3.1)
 
-project( MulleObjC C)
-
+project( MulleObjCLockFoundation C)
+#
+# Turn a "Library" into an "Executable"
+# * touch src/main.m
+# Then set MULLE_PROJECT_TYPE to "Executable".
+# * mulle-sde reflect
+# * mulle-sde craft
+#
+set( MULLE_PROJECT_TYPE "Library")
 
 ### mulle-sde environment
 
 # add cmake module paths to search path
 list( INSERT CMAKE_MODULE_PATH 0 "${PROJECT_SOURCE_DIR}/cmake/share")
-list( INSERT CMAKE_MODULE_PATH 0 "${PROJECT_SOURCE_DIR}/cmake/reflect")
-list( INSERT CMAKE_MODULE_PATH 0 "${PROJECT_SOURCE_DIR}/cmake/reflect")
 list( INSERT CMAKE_MODULE_PATH 0 "${PROJECT_SOURCE_DIR}/cmake/reflect")
 list( INSERT CMAKE_MODULE_PATH 0 "${PROJECT_SOURCE_DIR}/cmake")
 
@@ -16,27 +21,58 @@ include( Environment)
 
 include( Files)
 
-### Library
+if( "${MULLE_PROJECT_TYPE}" STREQUAL "Executable")
 
-if( HEADERS_PHASE)
-   install( FILES ${INSTALL_PUBLIC_HEADERS}  DESTINATION "include/MulleObjC")
-   install( FILES ${INSTALL_PRIVATE_HEADERS} DESTINATION "include/MulleObjC/private")
-   install( FILES ${CMAKE_INCLUDES}          DESTINATION "include/MulleObjC/cmake")
+   ### Executable
 
-   # short cut out
-   if( NOT COMPILE_PHASE AND NOT LINK_PHASE)
-      return()
+   include( Dependencies)
+   include( Executable)
+   include( InstallExecutable)
+
+   # only for Executable
+   include( Motd OPTIONAL)
+
+
+elseif( "${MULLE_PROJECT_TYPE}" STREQUAL "Framework")
+
+   ### Framework
+
+   if( LINK_PHASE)
+      include( Dependencies)
    endif()
+
+   include( Framework)
+   set_target_properties( "${FRAMEWORK_NAME}" PROPERTIES
+     FRAMEWORK_VERSION A
+   )
+   include( InstallFramework)
+
+elseif( "${MULLE_PROJECT_TYPE}" STREQUAL "Library")
+
+   ### Library
+
+   if( HEADERS_PHASE)
+      install( FILES ${INSTALL_PUBLIC_HEADERS}  DESTINATION "include/${PROJECT_NAME}")
+      install( FILES ${INSTALL_PRIVATE_HEADERS} DESTINATION "include/${PROJECT_NAME}/private")
+      install( FILES ${CMAKE_INCLUDES}          DESTINATION "include/${PROJECT_NAME}/cmake")
+
+      # short cut out
+      if( NOT COMPILE_PHASE AND NOT LINK_PHASE)
+         return()
+      endif()
+   endif()
+
+   if( LINK_PHASE)
+      include( Dependencies OPTIONAL)
+   endif()
+
+   include( Library)
+   include( InstallLibrary)
+
+else()
+
+   message( ERROR "Unknown project type \"${MULLE_PROJECT_TYPE}\"")
+
 endif()
 
-
-if( LINK_PHASE)
-   include( Dependencies OPTIONAL)
-endif()
-
-unset( STARTUP_LIBRARY_NAME)
-
-
-include( Library)
-include( InstallLibrary)
 include( FinalOutput OPTIONAL)
