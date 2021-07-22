@@ -15,7 +15,7 @@ endif()
 #
 # Generated from sourcetree: 71BFAE94-4F9B-47EF-8B41-0AC012013386;MulleObjC;no-singlephase;
 # Disable with : `mulle-sourcetree mark MulleObjC no-link`
-# Disable for this platform: `mulle-sourcetree mark MulleObjC no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark MulleObjC no-cmake-platform-darwin`
 #
 if( NOT MULLE_OBJC_LIBRARY)
    find_library( MULLE_OBJC_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjC${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjC NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -112,7 +112,7 @@ endif()
 #
 # Generated from sourcetree: 87ED9960-5F4E-4EB2-A704-E9D689797A1C;mulle-time;no-all-load,no-cmake-searchpath,no-import,no-singlephase;
 # Disable with : `mulle-sourcetree mark mulle-time no-link`
-# Disable for this platform: `mulle-sourcetree mark mulle-time no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark mulle-time no-cmake-platform-darwin`
 #
 if( NOT MULLE_TIME_LIBRARY)
    find_library( MULLE_TIME_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}mulle-time${CMAKE_STATIC_LIBRARY_SUFFIX} mulle-time NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
