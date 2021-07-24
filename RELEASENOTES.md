@@ -1,3 +1,3 @@
 ## 0.19.0
 
-* Various small improvements
+* split off from MulleObjC and MulleFoundation and MulleObjCOSFoundation
