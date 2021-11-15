@@ -52,7 +52,7 @@ Class               | Description
 Use [mulle-sde](//github.com/mulle-sde) to add MulleObjCLockFoundation to your project:
 
 ``` console
-mulle-sde dependency add --c --github MulleFoundation MulleObjCLockFoundation
+mulle-sde dependency add --objc --github MulleFoundation MulleObjCLockFoundation
 ```
 
 ## Install
