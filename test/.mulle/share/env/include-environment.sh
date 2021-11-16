@@ -17,7 +17,11 @@ MULLE_ENV_ETC_DIR="${MULLE_VIRTUAL_ROOT}/.mulle/etc/env"
 # environment-global.sh                 |
 # environment-os-${MULLE_UNAME}.sh      |
 # environment-host-${MULLE_HOSTNAME}.sh |
+<<<<<<< HEAD
 # environment-user-${MULLE_USERNAME}.sh           |
+=======
+# environment-user-${USER}.sh           |
+>>>>>>> bc910199e68391e0cd3e126be6fd31b04774d7d3
 # environment-custom.sh                 |
 #
 
@@ -76,9 +80,15 @@ then
    . "${MULLE_ENV_ETC_DIR}/environment-os-${MULLE_UNAME}.sh"
 fi
 
+<<<<<<< HEAD
 if [ -f "${MULLE_ENV_ETC_DIR}/environment-user-${MULLE_USERNAME}.sh" ]
 then
    . "${MULLE_ENV_ETC_DIR}/environment-user-${MULLE_USERNAME}.sh"
+=======
+if [ -f "${MULLE_ENV_ETC_DIR}/environment-user-${USER}.sh" ]
+then
+   . "${MULLE_ENV_ETC_DIR}/environment-user-${USER}.sh"
+>>>>>>> bc910199e68391e0cd3e126be6fd31b04774d7d3
 fi
 
 #

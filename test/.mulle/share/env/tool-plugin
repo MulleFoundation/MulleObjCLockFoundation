@@ -43,7 +43,10 @@ more
 more;optional
 mount
 mudo
+<<<<<<< HEAD
 mulle-column;optional
+=======
+>>>>>>> bc910199e68391e0cd3e126be6fd31b04774d7d3
 mv
 nano;optional
 ninja;optional
