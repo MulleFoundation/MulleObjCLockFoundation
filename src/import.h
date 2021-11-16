@@ -29,4 +29,9 @@
 
 #import "_MulleObjCLockFoundation-import.h"
 
+#ifndef MULLE_OBJC_LOCK_FOUNDATION_EXTERN_GLOBAL
+# define MULLE_OBJC_LOCK_FOUNDATION_EXTERN_GLOBAL MULLE_C_EXTERN_GLOBAL
+#endif
+
+
 /* You can add some more import statements here */
