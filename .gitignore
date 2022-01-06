@@ -14,9 +14,12 @@ var/
 *.exe.debug
 old/
 tmp/
+*.tmp
 tmp.*
 *.old
 *.bak
+.gdb_history
+
 
 call-benchmark/
 protocol-benchmark/
