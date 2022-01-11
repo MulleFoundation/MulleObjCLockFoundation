@@ -1,7 +1,7 @@
 ## 0.20.0
 
-* Various small improvements
-
+* fix a problem in enumerator
+* add missing `NSMapMember` function
 
 ## 0.19.0
 
