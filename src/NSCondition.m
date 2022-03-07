@@ -103,8 +103,11 @@
                                                &self->_lock,
                                                &wait_time);
    if( rval == ETIMEDOUT)
+   {
+      pthread_mutex_unlock( &self->_lock);
       return( NO);
-
+   }
+   
    return( YES);
 }
 
