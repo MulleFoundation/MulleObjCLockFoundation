@@ -14,16 +14,6 @@
 #ifndef _mulle_objc_lock_foundation_include_h__
 #define _mulle_objc_lock_foundation_include_h__
 
-// You can tweak the following #include with these commands.
-// (Use 87ED9960-5F4E-4EB2-A704-E9D689797A1C instead of mulle-time if there are duplicate entries)
-//    remove:             `mulle-sde dependency mark mulle-time no-header`
-//    rename:             `mulle-sde dependency|library set mulle-time include whatever.h`
-//    reorder:            `mulle-sde dependency move mulle-time <up|down>`
-//    toggle #include:    `mulle-sde dependency mark mulle-time [no-]import`
-//    toggle public:      `mulle-sde dependency mark mulle-time [no-]public`
-//    toggle optional:    `mulle-sde dependency mark mulle-time [no-]require`
-//    remove for platform:`mulle-sde dependency mark mulle-time no-platform-<uname>`
-//        (use `mulle-sourcetree-to-c --unames` to list known values)
-#include <mulle-time/mulle-time.h>   // mulle-time
+/* no headers */
 
 #endif

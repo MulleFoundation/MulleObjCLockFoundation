@@ -11,8 +11,11 @@ endif()
 # contents selected with patternfile ??-source--sources
 #
 set( SOURCES
+src/NSConditionLock+NSDate.m
 src/NSConditionLock.m
+src/NSCondition+NSDate.m
 src/NSCondition.m
+src/NSLock+NSDate.m
 src/NSLock.m
 src/NSRecursiveLock.m
 )

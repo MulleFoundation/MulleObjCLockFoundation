@@ -13,6 +13,8 @@
  */
 #import "NSCondition.h"
 
+#import "NSLocking.h"
+
 
 //
 // You use a NSConditionLock to synchronize threads. The actual workload
@@ -48,21 +50,28 @@
 - (void) mulleUnlockWithCondition:(NSInteger) value
                         broadcast:(BOOL) broadcast;
 
-//
-- (BOOL) lockBeforeTimeInterval:(mulle_timeinterval_t) timeInterval;
-
-
 // this will not deadlock
-- (BOOL) lockWhenCondition:(NSInteger) condition
-        beforeTimeInterval:(mulle_timeinterval_t) timeInterval;
+- (BOOL) mulleLockWhenCondition:(NSInteger) condition
+                        timeout:(mulle_relativetime_t) seconds;
 
-// this does the more common idiom
-// of pthread_mutex_lock  pthread_cond_waittimed
-// this may deadlock though, the time out is for sending the condition
-// not the holding of the lock
+- (BOOL) mulleLockWhenCondition:(NSInteger) condition
+             beforeTimeInterval:(NSTimeInterval) timeInterval;
+
+// this can deadlock
 - (BOOL) mulleLockWhenCondition:(NSInteger) value
-             beforeTimeInterval:(mulle_timeinterval_t) timeInterval;
+          waitUntilTimeInterval:(NSTimeInterval) timeInterval;
 
+//// this does the more common idiom
+//// of pthread_mutex_lock  pthread_cond_waittimed
+//// this may deadlock though, the time out is for sending the condition
+//// not the holding of the lock
+//- (BOOL) mulleLockWhenCondition:(NSInteger) value
+//             beforeTimeInterval:(mulle_timeinterval_t) timeInterval;
+
+//
+- (BOOL) mulleLockWithTimeout:(mulle_relativetime_t) seconds;
+
+- (BOOL) mulleLockBeforeTimeInterval:(NSTimeInterval) timeInterval;
 
 @end
 

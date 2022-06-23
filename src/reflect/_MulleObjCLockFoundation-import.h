@@ -12,6 +12,18 @@
  */
 
 // You can tweak the following #import with these commands.
+// (Use EC1666C7-1CB1-4471-A1C6-E5A151FE4B89 instead of MulleObjCTimeFoundation if there are duplicate entries)
+//    remove:             `mulle-sde dependency mark MulleObjCTimeFoundation no-header`
+//    rename:             `mulle-sde dependency|library set MulleObjCTimeFoundation include whatever.h`
+//    reorder:            `mulle-sde dependency move MulleObjCTimeFoundation <up|down>`
+//    toggle #import:     `mulle-sde dependency mark MulleObjCTimeFoundation [no-]import`
+//    toggle public:      `mulle-sde dependency mark MulleObjCTimeFoundation [no-]public`
+//    toggle optional:    `mulle-sde dependency mark MulleObjCTimeFoundation [no-]require`
+//    remove for platform:`mulle-sde dependency mark MulleObjCTimeFoundation no-platform-<uname>`
+//        (use `mulle-sourcetree-to-c --unames` to list known values)
+#import <MulleObjCTimeFoundation/MulleObjCTimeFoundation.h>   // MulleObjCTimeFoundation
+
+// You can tweak the following #import with these commands.
 // (Use 71BFAE94-4F9B-47EF-8B41-0AC012013386 instead of MulleObjC if there are duplicate entries)
 //    remove:             `mulle-sde dependency mark MulleObjC no-header`
 //    rename:             `mulle-sde dependency|library set MulleObjC include whatever.h`

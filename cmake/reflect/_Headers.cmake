@@ -12,6 +12,7 @@ endif()
 
 set( INCLUDE_DIRS
 src
+src/generic
 src/reflect
 )
 
@@ -27,7 +28,7 @@ src/reflect/_MulleObjCLockFoundation-include-private.h
 # contents selected with patternfile ??-header--private-generic-headers
 #
 set( PRIVATE_GENERIC_HEADERS
-src/import-private.h
+src/generic/import-private.h
 )
 
 #
@@ -44,7 +45,7 @@ src/reflect/_MulleObjCLockFoundation-provide.h
 # contents selected with patternfile ??-header--public-generic-headers
 #
 set( PUBLIC_GENERIC_HEADERS
-src/import.h
+src/generic/import.h
 )
 
 #
@@ -53,8 +54,11 @@ src/import.h
 set( PUBLIC_HEADERS
 src/MulleObjCLoader+MulleObjCLockFoundation.h
 src/MulleObjCLockFoundation.h
+src/NSConditionLock+NSDate.h
 src/NSConditionLock.h
+src/NSCondition+NSDate.h
 src/NSCondition.h
+src/NSLock+NSDate.h
 src/NSLock.h
 src/NSLocking.h
 src/NSRecursiveLock.h

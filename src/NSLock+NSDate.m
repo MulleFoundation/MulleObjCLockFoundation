@@ -1,6 +1,6 @@
 //
-//  NSLock.m
-//  MulleObjC
+//  NSLock+NSDate.m
+//  MulleObjCValueFoundation
 //
 //  Copyright (c) 2011 Nat! - Mulle kybernetiK.
 //  Copyright (c) 2011 Codeon GmbH.
@@ -33,91 +33,22 @@
 //  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 //  POSSIBILITY OF SUCH DAMAGE.
 //
-#define _GNU_SOURCE
-
-#import "NSLock.h"
+#import "NSLock+NSDate.h"
 
 // other files in this library
 
+// other libraries of MulleObjCValueFoundation
+
 // std-c and dependencies
+#import "import-private.h"
 
 
-@implementation NSLock
+@implementation NSLock (NSDate)
 
-- (instancetype) init
+
+- (BOOL) lockBeforeDate:(NSDate *) limit
 {
-   if( mulle_thread_mutex_init( &self->_lock))
-   {
-      fprintf( stderr, "%s could not acquire a mutex\n", __FUNCTION__);
-      abort();
-   }
-   return( self);
+   return( [self lockBeforeTimeInterval:[limit timeIntervalSinceReferenceDate]]);
 }
-
-
-- (void) dealloc
-{
-   mulle_thread_mutex_done( &self->_lock);
-   [super dealloc];
-}
-
-
-MULLE_C_NO_RETURN
-static void  rval_perror_abort( char *s, int rval)
-{
-   errno = rval;
-   perror( s);
-   abort();
-}
-
-
-- (void) lock
-{
-   int   rval;
-
-   rval = mulle_thread_mutex_lock( &self->_lock);
-   assert( ! rval);
-}
-
-
-- (void) unlock
-{
-   int   rval;
-
-   rval = mulle_thread_mutex_unlock( &self->_lock);
-   assert( ! rval);
-}
-
-
-- (BOOL) tryLock
-{
-   int   rval;
-
-   rval = mulle_thread_mutex_trylock( &self->_lock);
-   if( ! rval)
-      return( YES);
-   if( rval == EBUSY)
-      return( NO);
-   rval_perror_abort( "mulle_thread_mutex_trylock", rval);
-}
-
-
-- (BOOL) lockBeforeTimeInterval:(mulle_timeinterval_t) timeInterval
-{
-   for(;;)
-   {
-      if( mulle_timeinterval_now() >= timeInterval)
-         return( NO);
-
-      if( [self tryLock])
-         return( YES);
-
-      // TODO: why not use nanosleep or select and move this
-      //       to OS ? Because there is no "good" nanosleep value
-      //       in my opinion. What is too small, what is too large ?
-      mulle_thread_yield();
-   }
-}
-
 
 @end

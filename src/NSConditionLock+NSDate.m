@@ -1,9 +1,9 @@
 //
-//  NSLock.m
-//  MulleObjC
+//  NSConditionLock+NSDate.m
+//  MulleObjCLockFoundation
 //
-//  Copyright (c) 2011 Nat! - Mulle kybernetiK.
-//  Copyright (c) 2011 Codeon GmbH.
+//  Copyright (c) 2021 Nat! - Mulle kybernetiK.
+//  Copyright (c) 2021 Codeon GmbH.
 //  All rights reserved.
 //
 //
@@ -33,91 +33,46 @@
 //  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 //  POSSIBILITY OF SUCH DAMAGE.
 //
-#define _GNU_SOURCE
+#import "NSConditionLock.h"
 
-#import "NSLock.h"
-
-// other files in this library
-
-// std-c and dependencies
+#import "import-private.h"
 
 
-@implementation NSLock
+@class NSDate;
 
-- (instancetype) init
+
+@implementation NSConditionLock( NSDate)
+
+
+- (BOOL) mulleLockWhenCondition:(NSInteger) value
+                  waitUntilDate:(NSDate *) date
 {
-   if( mulle_thread_mutex_init( &self->_lock))
-   {
-      fprintf( stderr, "%s could not acquire a mutex\n", __FUNCTION__);
-      abort();
-   }
-   return( self);
+   NSTimeInterval   timeInterval;
+
+   timeInterval = [date timeIntervalSinceReferenceDate];
+   return( [self mulleLockWhenCondition:value
+                  waitUntilTimeInterval:timeInterval]);
 }
 
 
-- (void) dealloc
+- (BOOL) lockWhenCondition:(NSInteger) value
+                beforeDate:(NSDate *) date
 {
-   mulle_thread_mutex_done( &self->_lock);
-   [super dealloc];
+   NSTimeInterval   timeInterval;
+
+   timeInterval = [date timeIntervalSinceReferenceDate];
+   return( [self mulleLockWhenCondition:value
+                     beforeTimeInterval:timeInterval]);
 }
 
 
-MULLE_C_NO_RETURN
-static void  rval_perror_abort( char *s, int rval)
+- (BOOL) lockBeforeDate:(NSDate *) date
 {
-   errno = rval;
-   perror( s);
-   abort();
+   NSTimeInterval   timeInterval;
+
+   timeInterval = [date timeIntervalSinceReferenceDate];
+   return( [self mulleLockBeforeTimeInterval:timeInterval]);
 }
-
-
-- (void) lock
-{
-   int   rval;
-
-   rval = mulle_thread_mutex_lock( &self->_lock);
-   assert( ! rval);
-}
-
-
-- (void) unlock
-{
-   int   rval;
-
-   rval = mulle_thread_mutex_unlock( &self->_lock);
-   assert( ! rval);
-}
-
-
-- (BOOL) tryLock
-{
-   int   rval;
-
-   rval = mulle_thread_mutex_trylock( &self->_lock);
-   if( ! rval)
-      return( YES);
-   if( rval == EBUSY)
-      return( NO);
-   rval_perror_abort( "mulle_thread_mutex_trylock", rval);
-}
-
-
-- (BOOL) lockBeforeTimeInterval:(mulle_timeinterval_t) timeInterval
-{
-   for(;;)
-   {
-      if( mulle_timeinterval_now() >= timeInterval)
-         return( NO);
-
-      if( [self tryLock])
-         return( YES);
-
-      // TODO: why not use nanosleep or select and move this
-      //       to OS ? Because there is no "good" nanosleep value
-      //       in my opinion. What is too small, what is too large ?
-      mulle_thread_yield();
-   }
-}
-
 
 @end
+
