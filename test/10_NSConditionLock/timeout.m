@@ -46,7 +46,7 @@ int   main( int argc, const char * argv[])
    }
 
    after = _NSTimeIntervalNow();
-   if( before + 0.751 < after)
+   if( before + 0.75 > after)
    {
       fprintf( stderr, "timeout 1 too early (%.5f, %.5f)\n", before + 0.75, after);
       return( 1);
@@ -61,7 +61,7 @@ int   main( int argc, const char * argv[])
    }
 
    after = _NSTimeIntervalNow();
-   if( before + 0.751 < after)
+   if( before + 0.75 > after)
    {
       fprintf( stderr, "timeout 2 too early (%.5f, %.5f)\n", before + 0.75, after);
       return( 1);
