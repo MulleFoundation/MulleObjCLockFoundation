@@ -22,7 +22,10 @@
 // std-c and dependencies
 #include <math.h>  // for infinity
 
-//#define LOCK_DEBUG
+
+#ifdef MULLE_TEST
+# define LOCK_DEBUG
+#endif
 
 
 @implementation NSConditionLock
@@ -30,6 +33,7 @@
 - (instancetype) initWithCondition:(NSInteger) value
 {
    [super init];
+
    _mulle_atomic_pointer_nonatomic_write( &_currentCondition, (void *) value);
 
 #ifdef LOCK_DEBUG
@@ -65,6 +69,24 @@
 }
 
 
+- (void) mulleLockWhenNotCondition:(NSInteger) value
+{
+#ifdef LOCK_DEBUG
+   mulle_fprintf( stderr, "%@: %@ mulleLockWhenNotCondition:%td (%td)\n",
+                           [NSThread currentThread], self, value, [self condition]);
+#endif
+
+   [self lock];
+
+   while( value == (NSUInteger) _mulle_atomic_pointer_nonatomic_read( &_currentCondition))
+      [self wait];
+
+#ifdef LOCK_DEBUG
+   mulle_fprintf( stderr, "%@: %@ mulleLockWhenNotCondition:%td == success\n",
+                           [NSThread currentThread], self, value);
+#endif
+}
+
 
 - (BOOL) tryLockWhenCondition:(NSInteger) value
 {
@@ -97,6 +119,40 @@
 #endif
    return( NO);
 }
+
+
+- (BOOL) mulleTryLockWhenNotCondition:(NSInteger) value
+{
+#ifdef LOCK_DEBUG
+   mulle_fprintf( stderr, "%@: %@ mulleTryLockWhenNotCondition: %td (%td)\n",
+                           [NSThread currentThread], self, value, [self condition]);
+#endif
+   if( ! [self tryLock])
+   {
+#ifdef LOCK_DEBUG
+      mulle_fprintf( stderr, "%@: %@ mulleTryLockWhenNotCondition:%td == failed, no lock acquired\n",
+                              [NSThread currentThread], self, value);
+#endif
+      return( NO);
+   }
+
+   if( value != (NSInteger) _mulle_atomic_pointer_nonatomic_read( &_currentCondition))
+   {
+#ifdef LOCK_DEBUG
+      mulle_fprintf( stderr, "%@: %@ mulleTryLockWhenNotCondition:%td == success, condition didn't match (locked)\n",
+                              [NSThread currentThread], self, value);
+#endif
+      return( YES);
+   }
+
+   [self unlock];
+#ifdef LOCK_DEBUG
+   mulle_fprintf( stderr, "%@: %@ mulleTryLockWhenNotCondition:%td == failed, condition did match (unlocked)\n",
+                           [NSThread currentThread], self, value);
+#endif
+   return( NO);
+}
+
 
 
 - (void) unlockWithCondition:(NSInteger) value
@@ -169,7 +225,8 @@ static BOOL   tryLockUntilTimeInterval( NSConditionLock *self, NSTimeInterval ti
 }
 
 
-static mulle_relativetime_t   tryLockUntilTimeout( NSConditionLock *self, mulle_relativetime_t timeout)
+static mulle_relativetime_t   tryLockUntilTimeout( NSConditionLock *self,
+                                                   mulle_relativetime_t timeout)
 {
    mulle_absolutetime_t   now;
    mulle_absolutetime_t   then;
@@ -250,8 +307,6 @@ static mulle_relativetime_t   tryLockUntilTimeout( NSConditionLock *self, mulle_
 - (BOOL) mulleLockWhenCondition:(NSInteger) value
               beforeTimeInterval:(NSTimeInterval) timeInterval
 {
-   mulle_relativetime_t   remain;
-
    if( ! tryLockUntilTimeInterval( self, timeInterval))
       return( NO);
 
@@ -261,7 +316,7 @@ static mulle_relativetime_t   tryLockUntilTimeout( NSConditionLock *self, mulle_
       if( ! [self mulleWaitUntilTimeInterval:timeInterval])
       {
 #ifdef LOCK_DEBUG
-         mulle_fprintf( stderr, "%@: %@ %s %td,%.3f == failed, timeInterval reached\n",
+         mulle_fprintf( stderr, "%@: %@ %s %td == failed, timeInterval reached\n",
                               [NSThread currentThread], self, __PRETTY_FUNCTION__, value);
 #endif
          return( NO);

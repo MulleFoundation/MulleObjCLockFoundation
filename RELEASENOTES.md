@@ -1,3 +1,8 @@
+## 0.21.0
+
+* added -mulleTryLockWhenNotCondition and -mulleLockWhenNotCondition to NSConditionLock
+
+
 ### 0.20.1
 
 * changes for Windows

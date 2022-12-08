@@ -24,6 +24,10 @@
 #include <stdio.h>
 #include <math.h>  // for is_inf
 
+
+// TODO: look at rval and abort ?
+#define USE_FOR_DUMB_COMPILER( x)  ((void)(x))
+
 //
 // this is not done using mulle_thread because I don't want to
 // do cond_wait in it. Should check c11 though and maybe
@@ -66,6 +70,7 @@ static void  rval_perror_abort( char *s, int rval)
 
    rval = pthread_cond_signal( &self->_condition);
    assert( ! rval);
+   USE_FOR_DUMB_COMPILER( rval);
 #endif
 }
 
@@ -76,7 +81,7 @@ static void  rval_perror_abort( char *s, int rval)
    int   rval;
 
    rval = pthread_cond_broadcast( &self->_condition);
-   assert( ! rval);
+   USE_FOR_DUMB_COMPILER( rval);
 #endif
 }
 
@@ -108,6 +113,7 @@ static void  rval_perror_abort( char *s, int rval)
 
    rval = pthread_mutex_lock( &self->_lock);
    assert( ! rval);
+   USE_FOR_DUMB_COMPILER( rval);
 #endif
 
    _mulleIsLocked = YES;
@@ -123,6 +129,7 @@ static void  rval_perror_abort( char *s, int rval)
 #ifndef  _WIN32
    rval = pthread_mutex_unlock( &self->_lock);
    assert( ! rval);
+   USE_FOR_DUMB_COMPILER( rval);
 #endif
 }
 

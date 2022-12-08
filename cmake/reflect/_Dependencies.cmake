@@ -15,6 +15,7 @@ endif()
 # Generated from sourcetree: EC1666C7-1CB1-4471-A1C6-E5A151FE4B89;MulleObjCTimeFoundation;no-singlephase;
 # Disable with : `mulle-sourcetree mark MulleObjCTimeFoundation no-link`
 # Disable for this platform: `mulle-sourcetree mark MulleObjCTimeFoundation no-cmake-platform-${MULLE_UNAME}`
+# Disable for a sdk: `mulle-sourcetree mark MulleObjCTimeFoundation no-cmake-sdk-<name>`
 #
 if( NOT MULLE_OBJC_TIME_FOUNDATION_LIBRARY)
    find_library( MULLE_OBJC_TIME_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCTimeFoundation${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX} ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCTimeFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCTimeFoundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -95,6 +96,7 @@ endif()
 # Generated from sourcetree: 71BFAE94-4F9B-47EF-8B41-0AC012013386;MulleObjC;no-singlephase;
 # Disable with : `mulle-sourcetree mark MulleObjC no-link`
 # Disable for this platform: `mulle-sourcetree mark MulleObjC no-cmake-platform-${MULLE_UNAME}`
+# Disable for a sdk: `mulle-sourcetree mark MulleObjC no-cmake-sdk-<name>`
 #
 if( NOT MULLE_OBJC_LIBRARY)
    find_library( MULLE_OBJC_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjC${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX} ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjC${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjC NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)

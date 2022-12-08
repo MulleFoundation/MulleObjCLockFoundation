@@ -42,6 +42,10 @@
 // std-c and dependencies
 
 
+// TODO: look at rval and abort ?
+#define USE_FOR_DUMB_COMPILER( x)  ((void)(x))
+
+
 @implementation NSLock
 
 - (instancetype) init
@@ -77,6 +81,7 @@ static void  rval_perror_abort( char *s, int rval)
 
    rval = mulle_thread_mutex_lock( &self->_lock);
    assert( ! rval);
+   USE_FOR_DUMB_COMPILER( rval);
 }
 
 
@@ -86,6 +91,7 @@ static void  rval_perror_abort( char *s, int rval)
 
    rval = mulle_thread_mutex_unlock( &self->_lock);
    assert( ! rval);
+   USE_FOR_DUMB_COMPILER( rval);
 }
 
 

@@ -73,5 +73,10 @@
 
 - (BOOL) mulleLockBeforeTimeInterval:(NSTimeInterval) timeInterval;
 
+
+// only lock if condition does not match
+- (void) mulleLockWhenNotCondition:(NSInteger) value;
+- (BOOL) mulleTryLockWhenNotCondition:(NSInteger) value;
+
 @end
 
