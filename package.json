@@ -8,7 +8,7 @@
    "license" : "UNLICENSED",
    "repository" : {
       "type" : "git",
-      "url" : "MulleFoundation/MulleObjCLockFoundation"
+      "url" : "github:MulleFoundation/MulleObjCLockFoundation"
    },
    "dependencies" : {
       "MulleObjCTimeFoundation" : "git://github.com/MulleFoundation/MulleObjCTimeFoundation",
