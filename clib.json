@@ -1,0 +1,42 @@
+{
+   "name" : "MulleObjCLockFoundation",
+   "version" : "0.21.0",
+   "description" : "MulleObjCLockFoundation provides locking support",
+   "keywords" : [],
+   "license" : "BSD-3-Clause",
+   "repo" : "MulleFoundation/MulleObjCLockFoundation",
+   "src" : [
+      "src/generic/import-private.h",
+      "src/generic/import.h",
+      "src/MulleObjCLoader+MulleObjCLockFoundation.h",
+      "src/MulleObjCLoader+MulleObjCLockFoundation.m",
+      "src/MulleObjCLockFoundation.h",
+      "src/NSCondition+NSDate.h",
+      "src/NSCondition+NSDate.m",
+      "src/NSCondition.h",
+      "src/NSCondition.m",
+      "src/NSConditionLock+NSDate.h",
+      "src/NSConditionLock+NSDate.m",
+      "src/NSConditionLock.h",
+      "src/NSConditionLock.m",
+      "src/NSLock+NSDate.h",
+      "src/NSLock+NSDate.m",
+      "src/NSLock.h",
+      "src/NSLock.m",
+      "src/NSLocking.h",
+      "src/NSRecursiveLock.h",
+      "src/NSRecursiveLock.m",
+      "src/reflect/objc-loader.inc",
+      "src/reflect/_MulleObjCLockFoundation-export.h",
+      "src/reflect/_MulleObjCLockFoundation-import-private.h",
+      "src/reflect/_MulleObjCLockFoundation-import.h",
+      "src/reflect/_MulleObjCLockFoundation-include-private.h",
+      "src/reflect/_MulleObjCLockFoundation-include.h",
+      "src/reflect/_MulleObjCLockFoundation-provide.h"
+   ],
+   "dependencies" : {
+      "MulleFoundation/MulleObjCTimeFoundation": "*",
+      "mulle-objc/MulleObjC": "*",
+      "mulle-objc/mulle-objc-list": "*"
+   }
+}

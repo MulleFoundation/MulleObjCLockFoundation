@@ -1,0 +1,2 @@
+This framework builds on `mulle-thread` but is also dependend on posix
+conditions.
