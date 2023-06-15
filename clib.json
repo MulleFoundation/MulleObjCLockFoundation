@@ -26,6 +26,7 @@
       "src/NSLocking.h",
       "src/NSRecursiveLock.h",
       "src/NSRecursiveLock.m",
+      "src/reflect/objc-loader.inc",
       "src/reflect/_MulleObjCLockFoundation-export.h",
       "src/reflect/_MulleObjCLockFoundation-import-private.h",
       "src/reflect/_MulleObjCLockFoundation-import.h",
