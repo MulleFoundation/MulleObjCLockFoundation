@@ -74,6 +74,8 @@ Install the requirements:
 | [MulleObjC](https://github.com/mulle-objc/MulleObjC)             | 💎 A collection of Objective-C root classes for mulle-objc
 | [mulle-objc-list](https://github.com/mulle-objc/mulle-objc-list)             | 📒 Lists mulle-objc runtime information contained in executables.
 
+Download the latest [tar](https://github.com/MulleFoundation/MulleObjCLockFoundation/archive/refs/tags/latest.tar.gz) or [zip](https://github.com/MulleFoundation/MulleObjCLockFoundation/archive/refs/tags/latest.zip) archive and unpack it.
+
 Install **MulleObjCLockFoundation** into `/usr/local` with [cmake](https://cmake.org):
 
 ``` sh
