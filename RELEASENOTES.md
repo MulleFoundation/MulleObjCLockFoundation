@@ -1,3 +1,7 @@
+### 0.21.2
+
+* new macro MulleObjCLockDo that locks and unlocks the enclosing block
+
 ### 0.21.1
 
 * Various small improvements

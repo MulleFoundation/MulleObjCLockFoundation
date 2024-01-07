@@ -62,5 +62,6 @@ src/NSLock+NSDate.h
 src/NSLock.h
 src/NSLocking.h
 src/NSRecursiveLock.h
+src/reflect/_MulleObjCLockFoundation-versioncheck.h
 )
 

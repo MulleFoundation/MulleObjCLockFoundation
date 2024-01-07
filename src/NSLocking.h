@@ -42,3 +42,28 @@
 - (void) unlock;
 
 @end
+
+
+//
+// Use:
+//
+// NSLock   *lock;
+//
+// lock = [NSLock object];
+// MulleObjCLockingDo( lock)
+// {
+//    // do stuff while locked
+// }
+// // lock is now unlocked
+//
+#define MulleObjCLockDo( name)                                         \
+   for( int name ## __i = ([(name) lock], 0);                          \
+        ! name ## __i;                                                 \
+        name ## __i =  ([(name) unlock], 1                             \
+        )                                                              \
+      )                                                                \
+      for( int  name ## __j = 0;    /* break protection */             \
+           name ## __j < 1;                                            \
+           name ## __j++)
+
+#define MulleObjCLockingDo( name)   MulleObjCLockDo( name)

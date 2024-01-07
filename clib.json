@@ -1,7 +1,7 @@
 {
    "name" : "MulleObjCLockFoundation",
-   "version" : "0.21.1",
-   "description" : "MulleObjCLockFoundation provides locking support",
+   "version" : "0.21.2",
+   "description" : "🔐 MulleObjCLockFoundation provides locking support",
    "keywords" : [],
    "license" : "BSD-3-Clause",
    "repo" : "MulleFoundation/MulleObjCLockFoundation",
@@ -32,7 +32,8 @@
       "src/reflect/_MulleObjCLockFoundation-import.h",
       "src/reflect/_MulleObjCLockFoundation-include-private.h",
       "src/reflect/_MulleObjCLockFoundation-include.h",
-      "src/reflect/_MulleObjCLockFoundation-provide.h"
+      "src/reflect/_MulleObjCLockFoundation-provide.h",
+      "src/reflect/_MulleObjCLockFoundation-versioncheck.h"
    ],
    "dependencies" : {
       "MulleFoundation/MulleObjCTimeFoundation": "*",
