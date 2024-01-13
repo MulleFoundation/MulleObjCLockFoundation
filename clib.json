@@ -37,7 +37,6 @@
    ],
    "dependencies" : {
       "MulleFoundation/MulleObjCTimeFoundation": "*",
-      "mulle-objc/MulleObjC": "*",
       "mulle-objc/mulle-objc-list": "*"
    }
 }
